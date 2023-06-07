@@ -15,21 +15,22 @@ class BDEquery:
     def __init__(self):
 
         self.ulrMain = 'http://painelmunicipal.imb.go.gov.br/visao/variavel.php?'
-        self.urls = dict(
-            variableDescribe='http://painelmunicipal.imb.go.gov.br/visao/variavel.php?formatado=0&json=1&codigovariavel=',
-            unidadeMedida='http://painelmunicipal.imb.go.gov.br/visao/unidade.php?formatado=0&json=1&codigounidade=',
-            localidades='http://painelmunicipal.imb.go.gov.br/visao/localidade.php?formatado=0&json=1&codigolocalidade=&codigoibge=',
-            dados='''http://painelmunicipal.imb.go.gov.br/visao/dados.php?parametros=0|1|{locBDE}|{codIBGE}|{codVarBDE}|{anoInicial}|
-                                {anoFinal}|{ultimoAno}|{periodo}|{seriehistorica}|{auxVar}|{auxUnd}|{auxVarFnt}|{auxFnt}|{auxVarNota}|{auxNota}|'''
+        self.parameters = dict(
+            variableDescribe='formatado=0&json=1&codigovariavel=',
+            unidadeMedida="formatado=0&json=1&codigounidade=",
+            localidades='formatado=0&json=1&codigolocalidade=&codigoibge=',
+            dados='''parametros=0|1|{locbde}|{codibge}|{codVarBDE}|{anoinicial}|
+                                {anofinal}|{ultimoano}|{periodo}|{seriehistorica}|{auxVar}|{auxund}|{auxvarfnt}|
+                                {auxfnt}|{auxvarnota}|{auxnota}|'''
         )
 
     # Get variables datasets from databases statistics
-    def getVariablesBDE(self, codVar = None):
+    def getVariablesBDE(self, codvar=None):
 
-        if codVar is None:
-            url = self.urls['variableDescribe']
+        if codvar is None:
+            url = self.ulrMain + self.parameters['variableDescribe']
         else:
-            url = self.urls['variableDescribe'] + str(codVar)
+            url = self.ulrMain + self.parameters['variableDescribe'] + str(codvar)
 
         # Information requests
         data = requests.get(url)
@@ -39,12 +40,12 @@ class BDEquery:
         return data
 
     # Get units datasets from databases statistics
-    def getUnidadeBDE(self, codUnd=None):
+    def getUnidadeBDE(self, codund=None):
 
-        if codUnd is None:
-            url = self.urls['unidadeMedida']
+        if codund is None:
+            url = self.ulrMain + self.parameters['unidadeMedida']
         else:
-            url = self.urls['unidadeMedida'] + str(codUnd)
+            url = self.ulrMain + self.parameters['unidadeMedida'] + str(codund)
 
         # Requisicao da informacao
         data = requests.get(url)
@@ -54,21 +55,23 @@ class BDEquery:
         return data
 
     # Get locations datasets from databases statistics
+    @property
     def getLocalidadesBDE(self):
 
         # Requisicao da informacao
-        data = requests.get(self.urls['localidades'])
+        url = self.ulrMain + self.parameters['localidades']
+        data = requests.get(url)
         data = data.text
         data = json.loads(data)
 
         return data
 
     # Get datas from databases statistics
-    def getdadosBDE(self, locBDE=None, codIBGE=None, codVarBDE=None, anoInicial=None, anoFinal=None, ultimoAno=1,
-                    periodo=None, seriehistorica=None,
-                    auxVar=1, auxUnd=1, auxVarFnt=1, auxFnt=1, auxVarNota=1, auxNota=1):
+    def getdadosBDE(self, locbde=None, codibge=None, codvarbde=None, anoinicial=None, anofinal=None, ultimoano=1,
+                    periodo=None, seriehistorica=None, auxvar=1, auxund=1, auxvarfnt=1, auxfnt=1, auxvarnota=1,
+                    auxnota=1):
 
-        ##----------------------Parâmetros da pesquisa --------------------------
+        # ----------------------Parâmetros da pesquisa --------------------------
         # locBDE = Código da localidade no BDE e/ou 'T' para todos os municipios
         # codIBGE = Código da localidade no IBGE e/ou 'T' para todos os municipios
         # codVarBDE = Código da variável do BDE
@@ -77,15 +80,14 @@ class BDEquery:
         # periodo = Mostrar todas a série de dados da variavel
         # seriehistorica = Quantidade de ano dos valores da variável, sendo o ponto de partida o ultimo ano
 
-        if (anoInicial != None) or (anoFinal != None) or periodo != None:
-            ultimoAno = None
+        if (anoinicial is not None) or (anofinal is not None) or (periodo is not None):
+            ultimoano = None
 
         # URL dos dados
-        url = self.urls['dados']
-        url = url.format(locBDE=locBDE, codIBGE=codIBGE, codVarBDE=codVarBDE, anoInicial=anoInicial, anoFinal=anoFinal,
-                         ultimoAno=ultimoAno, periodo=periodo, seriehistorica=seriehistorica, auxVar=auxVar,
-                         auxUnd=auxUnd,
-                         auxVarFnt=auxVarFnt, auxFnt=auxFnt, auxVarNota=auxVarNota, auxNota=auxNota)
+        url = self.ulrMain + self.parameters['dados']
+        url = url.format(locBDE=locbde, codIBGE=codibge, codVarBDE=codvarbde, anoInicial=anoinicial, anoFinal=anofinal,
+                         ultimoAno=ultimoano, periodo=periodo, seriehistorica=seriehistorica, auxVar=auxvar,
+                         auxUnd=auxund, auxVarFnt=auxvarfnt, auxFnt=auxfnt, auxVarNota=auxvarnota, auxNota=auxnota)
 
         # Requisicao da informacao
         # Initial Time request
@@ -98,27 +100,24 @@ class BDEquery:
         for row in data:
             dicData = {}
             for j in row.keys():
-                # print(j)
+
                 if j == 'anos':
                     fulldic = dict()
                     dataYear = row[j]
-                    # for k in dataYear.keys():
                     count = 1
+
                     for k in dataYear.items():
                         new = dicData.copy()
                         new['ano'] = k[0]
                         new['valor'] = k[1]
                         fulldic[str(count)] = new
                         count += 1
-                        # dicData[k] = dataYear[k]
-                # elif j == 'fontes':
-                #    dataFonte = list(row[j].keys())
-                #    dicData[j] = dataFonte[0]
 
+                    for i in fulldic.values():
+                        listData.append(i)
                 else:
                     dicData[j] = row[j]
-            for i in fulldic.values():
-                listData.append(i)
+
         # End Time format
         data = listData
         return data
