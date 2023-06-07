@@ -11,24 +11,25 @@ import json
 
 class BDEquery:
 
-    # Initialze variables
+    # Initialize variables
     def __init__(self):
-        self.urls = {
-            'VariableDescribe': 'http://painelmunicipal.imb.go.gov.br/visao/variavel.php?formatado=0&json=1&codigovariavel=',
-            'unidadeMedida': 'http://painelmunicipal.imb.go.gov.br/visao/unidade.php?formatado=0&json=1&codigounidade=',
-            'localidades': 'http://painelmunicipal.imb.go.gov.br/visao/localidade.php?formatado=0&json=1&codigolocalidade=&codigoibge=',
-            'dados': '''http://painelmunicipal.imb.go.gov.br/visao/dados.php?parametros=0|1|{locBDE}|{codIBGE}|{codVarBDE}|{anoInicial}|
-                                {anoFinal}|{ultimoAno}|{periodo}|{seriehistorica}|{auxVar}|{auxUnd}|{auxVarFnt}|{auxFnt}|{auxVarNota}|{auxNota}|
-                        '''
-        }
+
+        self.ulrMain = 'http://painelmunicipal.imb.go.gov.br/visao/variavel.php?'
+        self.urls = dict(
+            variableDescribe='http://painelmunicipal.imb.go.gov.br/visao/variavel.php?formatado=0&json=1&codigovariavel=',
+            unidadeMedida='http://painelmunicipal.imb.go.gov.br/visao/unidade.php?formatado=0&json=1&codigounidade=',
+            localidades='http://painelmunicipal.imb.go.gov.br/visao/localidade.php?formatado=0&json=1&codigolocalidade=&codigoibge=',
+            dados='''http://painelmunicipal.imb.go.gov.br/visao/dados.php?parametros=0|1|{locBDE}|{codIBGE}|{codVarBDE}|{anoInicial}|
+                                {anoFinal}|{ultimoAno}|{periodo}|{seriehistorica}|{auxVar}|{auxUnd}|{auxVarFnt}|{auxFnt}|{auxVarNota}|{auxNota}|'''
+        )
 
     # Get variables datasets from databases statistics
-    def getVariablesBDE(self, codVar=None):
+    def getVariablesBDE(self, codVar = None):
 
-        if codVar == None:
-            url = self.urls['VariableDescribe']
+        if codVar is None:
+            url = self.urls['variableDescribe']
         else:
-            url = self.urls['VariableDescribe'] + str(codVar)
+            url = self.urls['variableDescribe'] + str(codVar)
 
         # Information requests
         data = requests.get(url)
@@ -40,7 +41,7 @@ class BDEquery:
     # Get units datasets from databases statistics
     def getUnidadeBDE(self, codUnd=None):
 
-        if codUnd == None:
+        if codUnd is None:
             url = self.urls['unidadeMedida']
         else:
             url = self.urls['unidadeMedida'] + str(codUnd)
