@@ -15,14 +15,14 @@ class BDEquery:
     def __init__(self):
 
         self.ulrMain = 'http://painelmunicipal.imb.go.gov.br/visao/variavel.php?'
-        self.parameters = dict(
-            variableDescribe='formatado=0&json=1&codigovariavel=',
-            unidadeMedida="formatado=0&json=1&codigounidade=",
-            localidades='formatado=0&json=1&codigolocalidade=&codigoibge=',
-            dados='''parametros=0|1|{locbde}|{codibge}|{codVarBDE}|{anoinicial}|
+        self.parameters = {
+            "variableDescribe": 'formatado=0&json=1&codigovariavel=',
+            "unidadeMedida": "formatado=0&json=1&codigounidade=",
+            "localidades": 'formatado=0&json=1&codigolocalidade=&codigoibge=',
+            "dados": '''parametros=0|1|{locbde}|{codibge}|{codVarBDE}|{anoinicial}|
                                 {anofinal}|{ultimoano}|{periodo}|{seriehistorica}|{auxVar}|{auxund}|{auxvarfnt}|
                                 {auxfnt}|{auxvarnota}|{auxnota}|'''
-        )
+        }
 
     # Get variables datasets from databases statistics
     def getVariablesBDE(self, codvar=None):
