@@ -9,4 +9,4 @@
 #####      variables = pd.DataFrame(data=a.getVariablesBDE())
 #####      units = pd.DataFrame(data=a.getUnidadeBDE())
 #####      location = pd.DataFrame(data=a.getLocalidadesBDE)
-#####      data = pd.DataFrame(data=a.getdadosBDE(codVarBDE='1;2',codIBGE='T',seriehistorica=5))
+#####      data = pd.DataFrame(data=a.getdadosBDE(codvarbde='1;2',codibge='T',seriehistorica=5))
