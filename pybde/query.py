@@ -85,7 +85,7 @@ class BDEquery:
 
         # URL dos dados
         url = self.ulrMain + self.parameters['dados']
-        url = url.format(locBDE=locbde, codIBGE=codibge, codVarBDE=codvarbde, anoInicial=anoinicial, anoFinal=anofinal,
+        url = url.format(locbde=locbde, codibge=codibge, codvarbde=codvarbde, anoInicial=anoinicial, anoFinal=anofinal,
                          ultimoAno=ultimoano, periodo=periodo, seriehistorica=seriehistorica, auxVar=auxvar,
                          auxUnd=auxund, auxVarFnt=auxvarfnt, auxFnt=auxfnt, auxVarNota=auxvarnota, auxNota=auxnota)
 
