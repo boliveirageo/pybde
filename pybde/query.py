@@ -26,7 +26,9 @@ class BDEquery:
 
     # Get variables datasets from databases statistics
     def getVariablesBDE(self, codvar=None):
-
+        """
+            Access variables (codes)  in Statistics Database in IMB
+        """
         if codvar is None:
             url = self.ulrMain + self.parameters['variableDescribe']
         else:
@@ -41,7 +43,9 @@ class BDEquery:
 
     # Get units datasets from databases statistics
     def getUnidadeBDE(self, codund=None):
-
+        """
+            Access units from data  in Statistics Database in IMB
+        """
         if codund is None:
             url = self.ulrMain + self.parameters['unidadeMedida']
         else:
@@ -57,7 +61,9 @@ class BDEquery:
     # Get locations datasets from databases statistics
     @property
     def getLocalidadesBDE(self):
-
+        """
+            Access data places (counties) in Statistics Database - IMB
+        """
         # Requisicao da informacao
         url = self.ulrMain + self.parameters['localidades']
         data = requests.get(url)
@@ -70,16 +76,17 @@ class BDEquery:
     def getdadosBDE(self, locbde=None, codibge=None, codvarbde=None, anoinicial=None, anofinal=None, ultimoano=1,
                     periodo=None, seriehistorica=None, auxvar=1, auxund=1, auxvarfnt=1, auxfnt=1, auxvarnota=1,
                     auxnota=1):
-
-        # ----------------------Parâmetros da pesquisa --------------------------
-        # locbde = Código da localidade no BDE e/ou 'T' para todos os municipios
-        # codibge = Código da localidade no IBGE e/ou 'T' para todos os municipios
-        # codvarbde = Código da variável do BDE
-        # anoinicial = O valor do ano inicial da variavel
-        # anofinal = O valor do ano final da variavel
-        # periodo = Mostrar todas a série de dados da variavel
-        # seriehistorica = Quantidade de ano dos valores da variável, sendo o ponto de partida o ultimo ano
-
+        """
+           Access data in Statistics Database - IMB 
+            ------------------- Parameters  --------------------------
+            locbde = Código da localidade no BDE e/ou 'T' para todos os municipios
+            codibge = Código da localidade no IBGE e/ou 'T' para todos os municipios
+            codvarbde = Código da variável do BDE
+            anoinicial = O valor do ano inicial da variavel
+            anofinal = O valor do ano final da variavel
+            periodo = Mostrar todas a série de dados da variavel
+            seriehistorica = Quantidade de ano dos valores da variável, sendo o ponto de partida o ultimo ano
+        """
         if (anoinicial is not None) or (anofinal is not None) or (periodo is not None):
             ultimoano = None
 
