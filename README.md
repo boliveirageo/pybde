@@ -8,5 +8,5 @@
 #####      bdeObj = bde.BDEquery()
 #####      variables = pd.DataFrame(data=a.getVariablesBDE())
 #####      units = pd.DataFrame(data=a.getUnidadeBDE())
-#####      location = pd.DataFrame(data=a.getLocalidadesBDE())
+#####      location = pd.DataFrame(data=a.getLocalidadesBDE)
 #####      data = pd.DataFrame(data=a.getdadosBDE(codVarBDE='1;2',codIBGE='T',seriehistorica=5))
