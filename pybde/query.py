@@ -19,7 +19,7 @@ class BDEquery:
             "variableDescribe": 'variavel.php?formatado=0&json=1&codigovariavel=',
             "unidadeMedida": "unidade.php?formatado=0&json=1&codigounidade=",
             "localidades": 'localidade.php?formatado=0&json=1&codigolocalidade=&codigoibge=',
-            "dados": '''dados.php?parametros=0|1|{locbde}|{codibge}|{codVarBDE}|{anoinicial}|
+            "dados": '''dados.php?parametros=0|1|{locbde}|{codibge}|{codvarbde}|{anoinicial}|
                                 {anofinal}|{ultimoano}|{periodo}|{seriehistorica}|{auxVar}|{auxund}|{auxvarfnt}|
                                 {auxfnt}|{auxvarnota}|{auxnota}|'''
         }
