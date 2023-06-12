@@ -1,7 +1,7 @@
 ## pybde - a module to access IMB data
 
 ### This is a module to access data from IMB (Mauro Borges Statistic and Socioeconomic Institute).
-#### Install from github: !pip install git+https://github.com/boliveirageo/pybde.git
+#### Install from github: pip install git+https://github.com/boliveirageo/pybde.git
 #### Usage:
 #####      import pybde.query as bde 
 #####      import pandas as pd
