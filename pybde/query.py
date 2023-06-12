@@ -2,7 +2,7 @@
 """
     pybde: A module to access Database Statistics from Mauro Borges Institute (IMB) 
     (c) 2023 Bernard Silva de Oliveira [bernard.oliveira@goias.gov.br]
-    
+
 """
 
 import requests
@@ -14,12 +14,12 @@ class BDEquery:
     # Initialize variables
     def __init__(self):
 
-        self.ulrMain = 'http://painelmunicipal.imb.go.gov.br/visao/variavel.php?'
+        self.ulrMain = 'http://painelmunicipal.imb.go.gov.br/visao/'
         self.parameters = {
-            "variableDescribe": 'formatado=0&json=1&codigovariavel=',
-            "unidadeMedida": "formatado=0&json=1&codigounidade=",
-            "localidades": 'formatado=0&json=1&codigolocalidade=&codigoibge=',
-            "dados": '''parametros=0|1|{locbde}|{codibge}|{codVarBDE}|{anoinicial}|
+            "variableDescribe": 'variavel.php?formatado=0&json=1&codigovariavel=',
+            "unidadeMedida": "unidade.php?formatado=0&json=1&codigounidade=",
+            "localidades": 'localidade.php?formatado=0&json=1&codigolocalidade=&codigoibge=',
+            "dados": '''dados.php?parametros=0|1|{locbde}|{codibge}|{codVarBDE}|{anoinicial}|
                                 {anofinal}|{ultimoano}|{periodo}|{seriehistorica}|{auxVar}|{auxund}|{auxvarfnt}|
                                 {auxfnt}|{auxvarnota}|{auxnota}|'''
         }
@@ -94,7 +94,7 @@ class BDEquery:
         data = requests.get(url)
         data = data.text
         data = json.loads(data)
-        #listData = []
+        # listData = []
         # End Time request
         # Initial Time Format
         for row in data:
