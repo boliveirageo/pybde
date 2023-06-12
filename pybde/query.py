@@ -94,7 +94,7 @@ class BDEquery:
         data = requests.get(url)
         data = data.text
         data = json.loads(data)
-        # listData = []
+        listData = []
         # End Time request
         # Initial Time Format
         for row in data:
@@ -113,7 +113,8 @@ class BDEquery:
                         fulldic[str(count)] = new
                         count += 1
 
-                    listData = [i for i in fulldic.values()]
+                    for i in fulldic.values():
+                        listData.append(i)
 
                 else:
                     dicData[j] = row[j]
