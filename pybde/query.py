@@ -20,7 +20,7 @@ class BDEquery:
             "unidadeMedida": "unidade.php?formatado=0&json=1&codigounidade=",
             "localidades": 'localidade.php?formatado=0&json=1&codigolocalidade=&codigoibge=',
             "dados": '''dados.php?parametros=0|1|{locbde}|{codibge}|{codvarbde}|{anoinicial}|
-                                {anofinal}|{ultimoano}|{periodo}|{seriehistorica}|{auxVar}|{auxund}|{auxvarfnt}|
+                                {anofinal}|{ultimoano}|{periodo}|{seriehistorica}|{auxvar}|{auxund}|{auxvarfnt}|
                                 {auxfnt}|{auxvarnota}|{auxnota}|'''
         }
 
@@ -85,9 +85,9 @@ class BDEquery:
 
         # URL dos dados
         url = self.ulrMain + self.parameters['dados']
-        url = url.format(locbde=locbde, codibge=codibge, codvarbde=codvarbde, anoInicial=anoinicial, anoFinal=anofinal,
-                         ultimoAno=ultimoano, periodo=periodo, seriehistorica=seriehistorica, auxVar=auxvar,
-                         auxUnd=auxund, auxVarFnt=auxvarfnt, auxFnt=auxfnt, auxVarNota=auxvarnota, auxNota=auxnota)
+        url = url.format(locbde=locbde, codibge=codibge, codvarbde=codvarbde, anoinicial=anoinicial, anofinal=anofinal,
+                         ultimoano=ultimoano, periodo=periodo, seriehistorica=seriehistorica, auxvar=auxvar,
+                         auxund=auxund, auxvarfnt=auxvarfnt, auxfnt=auxfnt, auxvarnota=auxvarnota, auxnota=auxnota)
 
         # Requisicao da informacao
         # Initial Time request
