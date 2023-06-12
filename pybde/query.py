@@ -72,11 +72,11 @@ class BDEquery:
                     auxnota=1):
 
         # ----------------------Parâmetros da pesquisa --------------------------
-        # locBDE = Código da localidade no BDE e/ou 'T' para todos os municipios
-        # codIBGE = Código da localidade no IBGE e/ou 'T' para todos os municipios
-        # codVarBDE = Código da variável do BDE
-        # anoInicial = O valor do ano inicial da variavel
-        # anoFinal = O valor do ano final da variavel
+        # locbde = Código da localidade no BDE e/ou 'T' para todos os municipios
+        # codibge = Código da localidade no IBGE e/ou 'T' para todos os municipios
+        # codvarbde = Código da variável do BDE
+        # anoinicial = O valor do ano inicial da variavel
+        # anofinal = O valor do ano final da variavel
         # periodo = Mostrar todas a série de dados da variavel
         # seriehistorica = Quantidade de ano dos valores da variável, sendo o ponto de partida o ultimo ano
 
