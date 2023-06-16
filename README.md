@@ -17,14 +17,14 @@ Install from github: pip install git+https://github.com/boliveirageo/pybde.git.
       bdeObj = bde.BDEquery()
       
       #Variables information from Statistics Database of IMB 
-      variables = pd.DataFrame(data=a.getVariablesBDE())
+      variables = pd.DataFrame(data=a.getVariables())
       
       #Variables units information from Statistics Database of IMB
-      units = pd.DataFrame(data=a.getUnidadeBDE())
+      units = pd.DataFrame(data=a.getUnits())
       
       #Municipalites information from Statistics Database of IMB
-      location = pd.DataFrame(data=a.getLocalidadesBDE)
+      location = pd.DataFrame(data=a.getLocations)
       
       #Access data from Statistics Database of IMB in variables code of 1 and 2,
       #all location in Goias at last 5 years.
-      data = pd.DataFrame(data=a.getdadosBDE(codvarbde='1;2',codibge='T',seriehistorica=5))
+      data = pd.DataFrame(data=a.getdata(codvarbde='1;2',codibge='T',seriehistorica=5))

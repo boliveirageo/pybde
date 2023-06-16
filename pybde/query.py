@@ -25,7 +25,7 @@ class BDEquery:
         }
 
     # Get variables datasets from databases statistics
-    def getVariablesBDE(self, codvar=None):
+    def getVariables(self, codvar=None):
         """
             Access variables (codes)  in Statistics Database in IMB
         """
@@ -42,7 +42,7 @@ class BDEquery:
         return data
 
     # Get units datasets from databases statistics
-    def getUnidadeBDE(self, codund=None):
+    def getUnits(self, codund=None):
         """
             Access units from data  in Statistics Database in IMB
         """
@@ -60,7 +60,7 @@ class BDEquery:
 
     # Get locations datasets from databases statistics
     @property
-    def getLocalidadesBDE(self):
+    def getLocations(self):
         """
             Access data places (counties) in Statistics Database - IMB
         """
@@ -73,7 +73,7 @@ class BDEquery:
         return data
 
     # Get datas from databases statistics
-    def getdadosBDE(self, locbde=None, codibge=None, codvarbde=None, anoinicial=None, anofinal=None, ultimoano=1,
+    def getdata(self, locbde=None, codibge=None, codvarbde=None, anoinicial=None, anofinal=None, ultimoano=1,
                     periodo=None, seriehistorica=None, auxvar=1, auxund=1, auxvarfnt=1, auxfnt=1, auxvarnota=1,
                     auxnota=1):
         """
