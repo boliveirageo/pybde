@@ -82,19 +82,19 @@ class BDEquery:
             Parameters
             ----------
             codvarbde: str
-                Código da variável do BDE
+                Variable code of the BDE. To acquire the code of the variables in the BDE, use the function getVariables of the pybde.
+                To query multiples variables, use semicolon in between codes.
+                Example: data = getdata(codvarbde='1;2')
 
-            codibge: str, optinal
-                Código da localidade no IBGE e/ou 'T' para todos os municipios
+            codibge: str, optional
+                IBGE locality code, but use 'T' to show all municipalities. The value 'T' is default.
+                Example: data = getdata(codvarbde='1;2',codibge='5208707') -> Access data from Goiãnia City.
 
             anoinicial:str, optional
-                O valor do ano inicial da variavel
+                Initial year you want to view the information.
 
             anofinal:str, optional
-                O valor do ano final da variavel
-
-            periodo:int, optional
-                Mostrar todas a série de dados da variavel
+                Final year for which information is to be viewed.
 
             seriehistorica:int, optional
                 Quantidade de ano dos valores da variável, sendo o ponto de partida o ultimo ano
@@ -104,7 +104,7 @@ class BDEquery:
             data: dict
 
         """
-       
+
         #Parâmetros da API
         param = {
             "codibge": 'T',
@@ -112,7 +112,6 @@ class BDEquery:
             "anoinicial": None,
             "anofinal": None,
             "ultimoano": 1,
-            "periodo": None,
             "seriehistorica": None,
 
         }
@@ -125,7 +124,7 @@ class BDEquery:
         url = self.ulrMain + self.parameters['dados']
         url = url.format(locbde=None, codibge=param['codibge'], codvarbde=codvarbde,
                          anoinicial=param['anoinicial'],anofinal=param['anofinal'],
-                         ultimoano=param["ultimoano"], periodo=param["periodo"],
+                         ultimoano=param["ultimoano"], periodo=1,
                          seriehistorica=param["seriehistorica"],auxvar=1, auxund=1,
                          auxvarfnt=1, auxfnt=1,auxvarnota=1, auxnota=1)
 
