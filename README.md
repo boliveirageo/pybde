@@ -25,6 +25,5 @@ Install from github: pip install git+https://github.com/boliveirageo/pybde.git.
       #Municipalites information from Statistics Database of IMB
       location = pd.DataFrame(data=a.getLocations)
       
-      #Access data from Statistics Database of IMB in variables code of 1 and 2,
-      #all location in Goias at last 5 years.
-      data = pd.DataFrame(data=a.getdata(codvarbde='1;2',codibge='T',seriehistorica=5))
+      #Access data from Statistics Database of IMB in variables code of 1 and 2.
+      data = pd.DataFrame(data=a.getdata(codvarbde='1;2'))
