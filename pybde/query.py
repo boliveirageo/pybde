@@ -73,23 +73,19 @@ class BDEquery:
         return data
 
     # Get datas from databases statistics
-    def getdata(self, locbde=None, codibge=None, codvarbde=None, anoinicial=None, anofinal=None, ultimoano=1,
-                    periodo=None, seriehistorica=None, auxvar=1, auxund=1, auxvarfnt=1, auxfnt=1, auxvarnota=1,
-                    auxnota=1):
+    def getdata(self, codvarbde, **kwargs):
+
         """
 
             Access data in Statistics Database - IMB
 
             Parameters
             ----------
-            locbde: str, optional
-                Código da localidade no BDE e/ou 'T' para todos os municipios.
+            codvarbde: str
+                Código da variável do BDE
 
             codibge: str, optinal
                 Código da localidade no IBGE e/ou 'T' para todos os municipios
-
-            codvarbde: str, optional
-                Código da variável do BDE
 
             anoinicial:str, optional
                 O valor do ano inicial da variavel
@@ -108,14 +104,30 @@ class BDEquery:
             data: dict
 
         """
-        if (anoinicial is not None) or (anofinal is not None) or (periodo is not None):
-            ultimoano = None
+       
+        #Parâmetros da API
+        param = {
+            "codibge": 'T',
+            "anoinicial": None,
+            "anoinicial": None,
+            "anofinal": None,
+            "ultimoano": 1,
+            "periodo": None,
+            "seriehistorica": None,
+
+        }
+
+        for kp in kwargs.keys():
+            try:param[kp] = kwargs[kp]
+            except:continue
 
         # URL dos dados
         url = self.ulrMain + self.parameters['dados']
-        url = url.format(locbde=locbde, codibge=codibge, codvarbde=codvarbde, anoinicial=anoinicial, anofinal=anofinal,
-                         ultimoano=ultimoano, periodo=periodo, seriehistorica=seriehistorica, auxvar=auxvar,
-                         auxund=auxund, auxvarfnt=auxvarfnt, auxfnt=auxfnt, auxvarnota=auxvarnota, auxnota=auxnota)
+        url = url.format(locbde=None, codibge=param['codibge'], codvarbde=codvarbde,
+                         anoinicial=param['anoinicial'],anofinal=param['anofinal'],
+                         ultimoano=param["ultimoano"], periodo=param["periodo"],
+                         seriehistorica=param["seriehistorica"],auxvar=1, auxund=1,
+                         auxvarfnt=1, auxfnt=1,auxvarnota=1, auxnota=1)
 
         # Requisicao da informacao
         # Initial Time request
