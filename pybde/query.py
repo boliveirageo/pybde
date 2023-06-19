@@ -90,13 +90,13 @@ class BDEquery:
                 IBGE locality code, but use 'T' to show all municipalities. The value 'T' is default.
                 Example: data = getdata(codvarbde='1;2',codibge='5208707') -> Access data from Goiãnia City.
 
-            anoinicial:str, optional
+            initialyear:str, optional
                 Initial year you want to view the information.
 
-            anofinal:str, optional
+            finalyear:str, optional
                 Final year for which information is to be viewed.
 
-            seriehistorica:int, optional
+            timeseries:int, optional
                 Quantidade de ano dos valores da variável, sendo o ponto de partida o ultimo ano
 
             Returns
@@ -108,12 +108,9 @@ class BDEquery:
         #Parâmetros da API
         param = {
             "codibge": 'T',
-            "anoinicial": None,
-            "anoinicial": None,
-            "anofinal": None,
-            "ultimoano": 1,
-            "seriehistorica": None,
-
+            "initialyear": None,
+            "finalyear": None,
+            "timeseries": None,
         }
 
         for kp in kwargs.keys():
@@ -123,10 +120,9 @@ class BDEquery:
         # URL dos dados
         url = self.ulrMain + self.parameters['dados']
         url = url.format(locbde=None, codibge=param['codibge'], codvarbde=codvarbde,
-                         anoinicial=param['anoinicial'],anofinal=param['anofinal'],
-                         ultimoano=param["ultimoano"], periodo=1,
-                         seriehistorica=param["seriehistorica"],auxvar=1, auxund=1,
-                         auxvarfnt=1, auxfnt=1,auxvarnota=1, auxnota=1)
+                         anoinicial=param['initialyear'],anofinal=param['finalyear'],
+                         ultimoano=1, periodo=1,seriehistorica=param["timeseries"],
+                         auxvar=1, auxund=1,auxvarfnt=1, auxfnt=1,auxvarnota=1, auxnota=1)
 
         # Requisicao da informacao
         # Initial Time request
