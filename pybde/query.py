@@ -77,31 +77,36 @@ class BDEquery:
 
         """
 
-            Access data in Statistics Database - IMB
+            |Access data in Statistics Database - IMB
+            |
+            |Parameters
+            |----------
+            |codvarbde: str
+            |    Variable code of the BDE. To acquire the code of the variables in the BDE, use the function getVariables of the pybde.
+            |    To query multiples variables, use semicolon in between codes.
+            |    Example: data = getdata(codvarbde='1;2')
+            |
+            |codibge: str, optional
+            |    IBGE locality code, but use 'T' to show all municipalities. The value 'T' is default.
+            |    Example: data = getdata(codvarbde='1;2',codibge='5208707') -> Access data from Goiãnia City.
+            |
+            |initialyear:str, optional
+            |    Initial year you want to view the information.
+            |
+            |finalyear:str, optional
+            |    Final year for which information is to be viewed.
+            |
+            |timeseries:int, optional
+            |    Quantidade de ano dos valores da variável, sendo o ponto de partida o ultimo ano
+            |
+            |Returns
+            |-------
+            |data: dict
+            |
+            |Examples
+            |--------
 
-            Parameters
-            ----------
-            codvarbde: str
-                Variable code of the BDE. To acquire the code of the variables in the BDE, use the function getVariables of the pybde.
-                To query multiples variables, use semicolon in between codes.
-                Example: data = getdata(codvarbde='1;2')
 
-            codibge: str, optional
-                IBGE locality code, but use 'T' to show all municipalities. The value 'T' is default.
-                Example: data = getdata(codvarbde='1;2',codibge='5208707') -> Access data from Goiãnia City.
-
-            initialyear:str, optional
-                Initial year you want to view the information.
-
-            finalyear:str, optional
-                Final year for which information is to be viewed.
-
-            timeseries:int, optional
-                Quantidade de ano dos valores da variável, sendo o ponto de partida o ultimo ano
-
-            Returns
-            -------
-            data: dict
 
         """
 
