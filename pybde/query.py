@@ -77,35 +77,35 @@ class BDEquery:
 
         """
 
-            |Access data in Statistics Database - IMB
+            |   Access data in Statistics Database - IMB
             |
-            |Parameters
-            |----------
-            |codvarbde: str
-            |    Variable code of the BDE. To acquire the code of the variables in the BDE, use the function getVariables of the pybde.
-            |    To query multiples variables, use semicolon in between codes.
-            |    Example: data = getdata(codvarbde='1;2')
+            |   Parameters
+            |   ----------
+            |   codvarbde: str
+            |       Variable code of the BDE. To acquire the code of the variables in the BDE, use the function getVariables of the pybde.
+            |       To query multiples variables, use semicolon in between codes.
             |
-            |codibge: str, optional
-            |    IBGE locality code, but use 'T' to show all municipalities. The value 'T' is default.
-            |    Example: data = getdata(codvarbde='1;2',codibge='5208707') -> Access data from Goiãnia City.
+            |   codibge: str, optional
+            |       IBGE locality code, but use 'T' to show all municipalities. The value 'T' is default.
             |
-            |initialyear:str, optional
-            |    Initial year you want to view the information.
+            |   initialyear:str, optional
+            |       Initial year you want to view the information.
             |
-            |finalyear:str, optional
-            |    Final year for which information is to be viewed.
+            |   finalyear:str, optional
+            |       Final year for which information is to be viewed.
             |
-            |timeseries:int, optional
-            |    Quantidade de ano dos valores da variável, sendo o ponto de partida o ultimo ano
+            |   timeseries:int, optional
+            |       Number of year of the values of the variable, the starting point being the last year
             |
-            |Returns
-            |-------
-            |data: dict
+            |   Returns
+            |   -------
+            |   data: dict
             |
-            |Examples
-            |--------
-
+            |   Examples
+            |   --------
+            |   data = getdata(codvarbde='1;2',codibge='5208707') -> Access data from Goiãnia City.
+            |   data = getdata(codvarbde='15',codibge='5208707',timeseries=10) -> Access data from Goiãnia City in 10 years.
+            
 
 
         """
