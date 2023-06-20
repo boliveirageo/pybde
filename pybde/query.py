@@ -103,9 +103,15 @@ class BDEquery:
             |
             |   Examples
             |   --------
-            |   data = getdata(codvarbde='1;2',codibge='5208707') -> Access data from Goiãnia City.
-            |   data = getdata(codvarbde='15',codibge='5208707',timeseries=10) -> Access data from Goiãnia City in 10 years.
-            
+            |   import pybde.query as bde
+            |
+            |   bdeObj = bde.BDEquery()
+            |
+            |   bdeObj.getdata(codvarbde='1;2',codibge='5208707') -> Access data from Goiãnia City.
+            |   bdeObj.getdata(codvarbde='15',codibge='5208707',timeseries=10) -> Access data from Goiãnia City in 10 years.
+            |   bdeObj.getdata(codvarbde='15',codibge='5208707',initialyear=2013,finalyear=2019) -> Access data from Goiãnia City in between 2013 and 2019.
+            |   bdeObj.getdata(codvarbde='15',codibge='5208707',initialyear=2013,finalyear=2019,timeseries=5) -> Access data from Goiãnia City of the last 5 years in between 2013 and 2019.
+
 
 
         """
@@ -122,11 +128,19 @@ class BDEquery:
             try:param[kp] = kwargs[kp]
             except:continue
 
+        if (param['initialyear'] is not None) and (param['initialyear'] is not None):
+            ultimoano = 0
+            periodo = None
+        else:
+            ultimoano = 1
+            periodo = 1
+
+
         # URL dos dados
         url = self.ulrMain + self.parameters['dados']
         url = url.format(locbde=None, codibge=param['codibge'], codvarbde=codvarbde,
                          anoinicial=param['initialyear'],anofinal=param['finalyear'],
-                         ultimoano=1, periodo=1,seriehistorica=param["timeseries"],
+                         ultimoano=ultimoano, periodo=periodo,seriehistorica=param["timeseries"],
                          auxvar=1, auxund=1,auxvarfnt=1, auxfnt=1,auxvarnota=1, auxnota=1)
 
         # Requisicao da informacao
