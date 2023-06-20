@@ -6,6 +6,7 @@ This is a module to access data from IMB (Mauro Borges Statistic and Socioeconom
 can be found at https://painelmunicipal.imb.go.gov.br/ by entering variable code, IBGE code or location IMB code.
 
 Install from github: pip install git+https://github.com/boliveirageo/pybde.git.
+Before installing via github, you need to install git and the python modules setuptools and setuptools-gui 
 
  Usage:
 
