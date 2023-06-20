@@ -28,6 +28,25 @@ class BDEquery:
     def getVariables(self, codvar=None):
         """
             Access variables (codes)  in Statistics Database in IMB
+            |
+            |   Parameters
+            |   ----------
+            |   codvar: int, optional
+            |       Code of the variable in the BDE.
+            |
+            |   Returns
+            |   -------
+            |   data: dict
+            |
+            |   Examples
+            |   --------
+            |
+            |   import pybde.query as bde
+            |
+            |   bdeObj = bde.BDEquery()
+            |
+            |   bdeObj.getVariables() -> Get all variables code in the BDE.
+            |   bdeObj.getVariables(codvar=1) -> Get information variable the of code 1 in the BDE
         """
         if codvar is None:
             url = self.ulrMain + self.parameters['variableDescribe']
@@ -45,6 +64,25 @@ class BDEquery:
     def getUnits(self, codund=None):
         """
             Access units from data  in Statistics Database in IMB
+            |
+            |   Parameters
+            |   ----------
+            |   codund: int, optional
+            |       Internal code of the units of measurement in the BDE.
+            |
+            |   Returns
+            |   -------
+            |   data: dict
+            |
+            |   Examples
+            |   --------
+            |
+            |   import pybde.query as bde
+            |
+            |   bdeObj = bde.BDEquery()
+            |
+            |   bdeObj.getUnits() -> Access all units of measurement variables in the BDE.
+            |   bdeObj.getUnits(codund=1) -> Get information measurement variable the of code 1 in the BDE.
         """
         if codund is None:
             url = self.ulrMain + self.parameters['unidadeMedida']
@@ -63,6 +101,16 @@ class BDEquery:
     def getLocations(self):
         """
             Access data places (counties) in Statistics Database - IMB
+            |
+            |   Returns
+            |   -------
+            |   data: dict
+            |   import pybde.query as bde
+            |
+            |   bdeObj = bde.BDEquery()
+            |
+            |   bdeObj.getLocations
+
         """
         # Requisicao da informacao
         url = self.ulrMain + self.parameters['localidades']
@@ -109,8 +157,8 @@ class BDEquery:
             |
             |   bdeObj.getdata(codvarbde='1;2',codibge='5208707') -> Access data from Goiãnia City.
             |   bdeObj.getdata(codvarbde='15',codibge='5208707',timeseries=10) -> Access data from Goiãnia City in 10 years.
-            |   bdeObj.getdata(codvarbde='15',codibge='5208707',initialyear=2013,finalyear=2019) -> Access data from Goiãnia City in between 2013 and 2019.
-            |   bdeObj.getdata(codvarbde='15',codibge='5208707',initialyear=2013,finalyear=2019,timeseries=5) -> Access data from Goiãnia City of the last 5 years in between 2013 and 2019.
+            |   bdeObj.getdata(codvarbde='15',codibge='5208707',initialyear=2013,finalyear=2019) -> Access data from Goiania City in between 2013 and 2019.
+            |   bdeObj.getdata(codvarbde='15',codibge='5208707',initialyear=2013,finalyear=2019,timeseries=5) -> Access data from Goiania City of the last 5 years in between 2013 and 2019.
 
 
 
