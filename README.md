@@ -21,7 +21,7 @@ Before installing via github, you need to install git and the python modules set
       variables = pd.DataFrame(data=bdeObj.getVariables())
       
       #Variables units information from Statistics Database of IMB
-      units = pd.DataFrame(data=bdeObj.getUnits)
+      units = pd.DataFrame(data=bdeObj.getUnits())
       
       #Municipalites information from Statistics Database of IMB
       location = pd.DataFrame(data=bdeObj.getLocations)
